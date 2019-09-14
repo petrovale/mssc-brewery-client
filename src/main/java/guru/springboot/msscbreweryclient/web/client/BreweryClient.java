@@ -1,6 +1,7 @@
 package guru.springboot.msscbreweryclient.web.client;
 
 import guru.springboot.msscbreweryclient.web.model.BeerDto;
+import java.net.URI;
 import java.util.UUID;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -26,5 +27,9 @@ public class BreweryClient {
 
   public void setApihost(String apihost) {
     this.apihost = apihost;
+  }
+
+  public URI saveNewBeer(BeerDto beerDto){
+    return restTemplate.postForLocation(apihost + BEER_PATH_V1, beerDto);
   }
 }
